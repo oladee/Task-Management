@@ -1,8 +1,21 @@
-# React + Vite
+# What to expect
+Users will be able to:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- View the optimal layout for the app depending on their device's screen size
 
-Currently, two official plugins are available:
+- See hover states for all interactive elements on the page
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add new todos to the list
+
+- Mark todos as complete
+
+- Delete todos from the list
+
+- Filter by all/active/complete todos
+
+- Clear all completed todos
+
+- Toggle light and dark mode
+
+- **Bonus**: Drag and drop to reorder items on the list
+
