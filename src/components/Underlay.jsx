@@ -5,13 +5,15 @@ import mobileLight from '../assets/bg-mobile-light.jpg'
 
 const Underlay = () => {
     var srcst1 = desktopDark + ' 1024w, ' + mobileDark + ' 375w'
-    var size = "(min-width: 375px) 375px, 375px"
+    var size = "(min-width: 1024px) 1024px, 375px"
   return (
-    <div>
+    <div className='h-[100svh]'>
       <div>
-        <img src={mobileDark} alt="Fine backgroud" sizes={size} srcSet={srcst1}/>
+        <img src={desktopDark} alt="Fine backgroud" sizes={size} srcSet={srcst1}/>
       </div>
-      <div></div>
+      <div className='bg-black h-[90vh]'>
+
+      </div>
     </div>
   )
 }
