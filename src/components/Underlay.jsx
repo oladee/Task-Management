@@ -11,8 +11,13 @@ const Underlay = () => {
       <div>
         <img src={desktopDark} alt="Fine backgroud" sizes={size} srcSet={srcst1}/>
       </div>
-      <div className='bg-black h-[90vh]'>
-
+      <div className='bg-gray-800 h-[70vh]'>
+        <div className=' w-[90%] mx-auto fixed top-20 left-5'>
+            <div>
+                <h1 className='text-4xl text-white font-extrabold'>T O D O</h1>
+            </div>
+            <div></div>
+        </div>
       </div>
     </div>
   )
