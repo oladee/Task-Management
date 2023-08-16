@@ -4,11 +4,11 @@ const TaskList = () =>{
     return(
         <div>
             <TodoItem/>
-            <div>
+            <div className='flex list-none px-4 py-2 bg-gray-800  text-white placeholder-white-500  rounded-b border-t border-grey-800 justify-between items-center'>
                 <p>0 item left</p>
-                <div>
+                <div className='flex'>
                     <p>All</p>
-                    <p>Active</p>
+                    <p className='mx-4'>Active</p>
                     <p>Completed</p>
                 </div>
                 <p>Clear Completed</p>
