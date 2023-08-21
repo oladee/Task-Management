@@ -1,14 +1,13 @@
-import React from "react";
-import checkIcon from "../assets/icon-check.svg";
 import crossIcon from "../assets/icon-cross.svg";
-function TodoItem() {
+function TodoItem({taskName}) {
+  let checking = document.getElementById('checking')
+  function handleClick(){
+    
+  }
   return (
     <div className="flex list-none px-4 py-2 bg-gray-800  text-white rounded-t mt-6 justify-between items-center">
-      <div>
-        <img src={checkIcon} alt="icon here" className="mr-2"></img>
-      </div>
-      <li>random todo...</li>
-      <img src={crossIcon} alt="icon here" className="ml-2"></img>
+      <input onClick={handleClick} type="checkbox" name={taskName}id="checking" />
+      <label htmlFor={taskName}>{taskName}</label>
     </div>
   );
 }
