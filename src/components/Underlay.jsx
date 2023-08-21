@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import desktopDark from "../assets/bg-desktop-dark.jpg";
 import desktopLight from "../assets/bg-desktop-light.jpg";
 import mobileDark from "../assets/bg-mobile-dark.jpg";
@@ -9,6 +10,48 @@ import TaskList from "./TaskList";
 const Underlay = () => {
   var srcst1 = desktopDark + " 1024w, " + mobileDark + " 375w";
   var size = "(min-width: 1024px) 1024px, 375px";
+
+  const [task, setTask] = useState([])
+
+  useEffect(() => {
+    let data = window.localStorage.getItem("data");
+    if (data) {
+      setTask(JSON.parse(data));
+    } else {
+      setTask([
+        
+            {
+              id: 1,
+              title: "Jog around the park 3x",
+            },
+            {
+              id: 2,
+              title: "10 minutes Meditation",
+            },
+            {
+              id: 3,
+              title: "Read for 1 hour",
+            },
+            {
+              id: 4,
+              title: "Pick up groceries",
+            },
+            {
+              id: 5,
+              title: 'Complete Todo App on Frontend Mentor'
+            }
+        
+        
+      ]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (task.length > 0)
+      window.localStorage.setItem("data", JSON.stringify(task));
+  }, [task]);
+
+
   return (
     <div className="h-screen">
       <div className="h-[30%]">
@@ -21,7 +64,7 @@ const Underlay = () => {
         />
       </div>
       <div className="bg-gray-900 h-[70%] absolute w-full bottom-0">
-        <div className="w-[90%] md:w-[55%] mx-auto relative top-[-10rem] flex flex-col justify-center items-center">
+        <div className="w-[90%] max-w-[500px] mx-auto relative top-[-10rem] flex flex-col justify-center items-center">
           <div className="flex items-center w-full justify-between">
             <h1 className="text-4xl text-white font-extrabold whitespace-nowrap">
               T O D O
