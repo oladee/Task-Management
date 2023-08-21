@@ -23,22 +23,27 @@ const Underlay = () => {
             {
               id: 1,
               title: "Jog around the park 3x",
+              completed: false
             },
             {
               id: 2,
               title: "10 minutes Meditation",
+              completed: true
             },
             {
               id: 3,
               title: "Read for 1 hour",
+              completed: false
             },
             {
               id: 4,
               title: "Pick up groceries",
+              completed: true
             },
             {
               id: 5,
-              title: 'Complete Todo App on Frontend Mentor'
+              title: 'Complete Todo App on Frontend Mentor',
+              completed: false
             }
         
         
