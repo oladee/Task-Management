@@ -6,7 +6,8 @@ import mobileDark from "../assets/bg-mobile-dark.jpg";
 import mobileLight from "../assets/bg-mobile-light.jpg";
 import Sun from "../assets/icon-sun.svg";
 import Form from "./Form";
-import TaskList from "./TaskList";
+import Footer from "./Footer";
+import Todoitem from './TodoItem'
 const Underlay = () => {
   var srcst1 = desktopDark + " 1024w, " + mobileDark + " 375w";
   var size = "(min-width: 1024px) 1024px, 375px";
@@ -78,7 +79,12 @@ const Underlay = () => {
           </div>
           <div className=" items-center w-full justify-between" >
             <Form />
-            <TaskList />
+            {task.map(x => {
+              return(
+                <Todoitem taskName={x.title} key={x.title}/> 
+              )
+            })}
+            <Footer/>
           </div>
         </div>
       </div>

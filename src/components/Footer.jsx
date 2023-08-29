@@ -1,9 +1,6 @@
-import React from 'react'
-import TodoItem from './TodoItem'
-const TaskList = () =>{
+const Footer = () =>{
     return(
         <div>
-            <TodoItem/>
             <div className='flex list-none px-4 py-2 bg-gray-800  text-white placeholder-white-500  rounded-b border-t border-grey-800 justify-between items-center text-[11px]'>
                 <p >0 item left</p>
                 <div className='flex'>
@@ -17,4 +14,4 @@ const TaskList = () =>{
     )
 }
 
-export default TaskList
+export default Footer
