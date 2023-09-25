@@ -15,9 +15,9 @@ const Underlay = () => {
   const [task, setTask] = useState([])
 
   useEffect(() => {
-    let data = window.localStorage.getItem("data");
-    if (data) {
-      setTask(JSON.parse(data));
+    let taskData = window.localStorage.getItem("taskData");
+    if (taskData) {
+      setTask(JSON.parse(taskData));
     } else {
       setTask([
         
@@ -54,9 +54,10 @@ const Underlay = () => {
 
   useEffect(() => {
     if (task.length > 0)
-      window.localStorage.setItem("data", JSON.stringify(task));
+      window.localStorage.setItem("taskData", JSON.stringify(task));
   }, [task]);
 
+  console.log(task)
 
   return (
     <div className="h-screen">
