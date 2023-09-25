@@ -80,12 +80,14 @@ const Underlay = () => {
           </div>
           <div className=" items-center w-full justify-between" >
             <Form />
+            <div className="bg-gray-800">
             {task.map(x => {
               return(
                 <Todoitem taskName={x.title} key={x.title}/> 
               )
             })}
             <Footer/>
+            </div>
           </div>
         </div>
       </div>

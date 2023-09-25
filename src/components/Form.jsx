@@ -5,7 +5,7 @@ const Form = () => {
     e.preventDefault();
   };
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="mb-5">
       <div >
         <button
           type="submit"
