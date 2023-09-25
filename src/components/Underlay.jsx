@@ -65,7 +65,7 @@ const Underlay = () => {
       window.localStorage.setItem("taskData", JSON.stringify(task));
   }, [task]);
 
-  console.log(task)
+
 
   return (
     <div className={lightMode? "h-screen text-white bg-white" : "h-screen text-white bg-gray-900"}>
@@ -90,11 +90,12 @@ const Underlay = () => {
           </div>
           <div className="items-center w-full justify-between"
           >
-            <Form lightMode={lightMode} />
+            <Form lightMode={lightMode} setTask={setTask} task={task}/>
             <div className={lightMode ? "bg-white" : "bg-gray-800"} >
-            {task.map(x => {
+            {task.map((x,index) => {
+              console.log(x)
               return(
-                <Todoitem taskName={x.title} key={x.title} lightMode={lightMode}/> 
+                <Todoitem taskName={x.title} key={x.title} lightMode={lightMode} completed={x.completed}/> 
               )
             })}
             <Footer lightMode={lightMode}/>

@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Form = ({lightMode}) => {
+const Form = ({lightMode, setTask, task}) => {
+
+  const [input, setInput] = useState('')
+
   const onSubmit = (e) => {
     e.preventDefault();
+    let file = [...task]
+    file.push({
+      id: new Date().getTime(),
+      title: input,
+      completed: false
+    })
+    setTask(file)
   };
 
   const normal = "w-full px-4 py-2  mt-10 rounded outline-none"
@@ -17,6 +27,10 @@ const Form = ({lightMode}) => {
           aria-label="Create a new todo..."
           type="text"
           placeholder="Create a new todo..."
+          value={input}
+          onChange={(e)=>{
+            setInput(e.target.value)
+          }}
           autoComplete="off"
         />
       </div>
