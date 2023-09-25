@@ -81,10 +81,10 @@ const Underlay = () => {
       <div className=" h-[70%] absolute w-full bottom-0">
         <div className="w-[90%] max-w-[500px] mx-auto relative top-[-10rem] flex flex-col justify-center items-center">
           <div className="flex items-center w-full justify-between">
-            <h1 className="text-4xl  font-extrabold whitespace-nowrap">
+            <h1 className="text-4xl font-extrabold whitespace-nowrap">
               T O D O
             </h1>
-            <img src={lightMode ? moon : Sun } alt="sun" className="object-contain h-8 ml-2"
+            <img src={lightMode ? moon : Sun } alt="sun" className="object-contain h-8 ml-2 cursor-pointer"
             onClick={handleMode}
             />
           </div>

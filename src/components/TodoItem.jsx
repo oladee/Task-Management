@@ -10,12 +10,12 @@ function TodoItem({ taskName, lightMode, setTask, task }) {
 
   return (
     <>
-    <div className="text-white p-3 px-4 flex justify-between">
+    <div className="text-white p-3 px-4 flex justify-between border-b border-slate-500 items-center">
       <label htmlFor={taskName} >
-      <input type="checkbox" name={taskName} id="" />
+      <input type="checkbox" name={taskName} id="" className="cursor-pointer" />
       <span className={lightMode? "text-black px-3" : "text-white px-3"}>{taskName}</span>
       </label>
-      <img src={crossIcon} alt="" />
+      <img src={crossIcon} alt="delete icon" className="cursor-pointer" />
     </div>
     </>
   );

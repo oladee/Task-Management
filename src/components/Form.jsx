@@ -13,6 +13,7 @@ const Form = ({lightMode, setTask, task}) => {
       completed: false
     })
     setTask(file)
+    setInput('')
   };
 
   const normal = "w-full px-4 py-2  mt-10 rounded outline-none"
