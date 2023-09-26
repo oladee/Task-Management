@@ -95,7 +95,7 @@ const Underlay = () => {
             {task.map((x,index) => {
               console.log(x)
               return(
-                <Todoitem taskName={x.title} key={x.title} lightMode={lightMode} completed={x.completed}/> 
+                <Todoitem taskName={x.title} id={x.id} key={x.id} lightMode={lightMode} completed={x.completed} task={task} setTask={setTask}/> 
               )
             })}
             <Footer lightMode={lightMode}/>
