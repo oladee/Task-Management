@@ -6,7 +6,7 @@ import './index.css'
 function App() {
 
   return (
-    <div className=''>
+    <div className='h-full'>
       <Underlay/>
     </div>
   )

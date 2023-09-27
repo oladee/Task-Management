@@ -20,6 +20,9 @@ const Underlay = () => {
     setLightMode(!lightMode)
   }
 
+  const handleCompleted = ()=>{
+  }
+
   const [task, setTask] = useState([])
 
   useEffect(() => {
@@ -67,9 +70,10 @@ const Underlay = () => {
 
 
 
+
   return (
-    <div className={lightMode? "h-screen text-white bg-white" : "h-screen text-white bg-gray-900"}>
-      <div className="h-[30%]">
+    <div className={lightMode? "h-full text-white bg-white" : " h-[100%] text-white bg-gray-900"}>
+      <div className="h-[200px] md:h-[30%]">
         <img
           className="w-full h-full object-cover"
           src={lightMode? desktopLight : desktopDark}
@@ -78,8 +82,8 @@ const Underlay = () => {
           srcSet={lightMode ? srcst2 : srcst1}
         />
       </div>
-      <div className=" h-[70%] absolute w-full bottom-0">
-        <div className="w-[90%] max-w-[500px] mx-auto relative top-[-10rem] flex flex-col justify-center items-center">
+      <div className="">
+        <div className="w-[90%] max-w-[500px] mx-auto relative top-[-8rem] md:top-[-10rem] flex flex-col justify-center items-center">
           <div className="flex items-center w-full justify-between">
             <h1 className="text-4xl font-extrabold whitespace-nowrap">
               T O D O
