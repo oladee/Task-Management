@@ -17,7 +17,11 @@ function TodoItem({ taskName, id, lightMode, setTask, task, completed }) {
 
   function handleDelete(){
     let item = [...task]
-    item.filter(value => id === value.id)
+    item.map((value,index) => {
+      if(value.id == id){
+        return item.splice(index,1)
+      }
+    })
     setTask(item)
 
   }
