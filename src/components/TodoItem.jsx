@@ -1,15 +1,41 @@
-import React from "react";
-import checkIcon from "../assets/icon-check.svg";
+import { useState } from "react";
 import crossIcon from "../assets/icon-cross.svg";
-function TodoItem() {
+import Footer from "./Footer";
+function TodoItem({ taskName, id, lightMode, setTask, task, completed }) {
+
+  const [complete,] = useState(completed)
+
+  function toggleComplete() {
+    let items = [...task]
+    items.map(value => {
+      if(value.id === id ){
+        value.completed = !complete
+      }
+    })
+    setTask(items)
+  }
+
+  function handleDelete(){
+    let item = [...task]
+    item.map((value,index) => {
+      if(value.id == id){
+        return item.splice(index,1)
+      }
+    })
+    setTask(item)
+
+  }
+
   return (
-    <div className="flex list-none px-4 py-2 bg-gray-800  text-white rounded-t mt-6 justify-between items-center">
-      <div>
-        <img src={checkIcon} alt="icon here" className="mr-2"></img>
-      </div>
-      <li>random todo...</li>
-      <img src={crossIcon} alt="icon here" className="ml-2"></img>
+    <>
+    <div className="text-white p-3 px-4 flex justify-between border-b border-slate-500 items-center">
+      <label htmlFor={taskName} >
+      <input type="checkbox" name={taskName} id="" className="cursor-pointer" onClick={toggleComplete}/>
+      <span className={lightMode? "text-black px-3" : "text-white px-3"}>{taskName}</span>
+      </label>
+      <img src={crossIcon} alt="delete icon" className="cursor-pointer" onClick={handleDelete} />
     </div>
+    </>
   );
 }
 
