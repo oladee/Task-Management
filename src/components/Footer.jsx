@@ -8,7 +8,8 @@ const Footer = ({ lightMode, task, setTask }) => {
     const itemsLeft = task.filter(x => x.completed === false)
 
     function clearCompleted () { 
-      
+      let newList = task.filter(x => x.completed !== true)
+      setTask(newList)
     }
 
   return (
@@ -26,7 +27,7 @@ const Footer = ({ lightMode, task, setTask }) => {
           <NavLink to="/active" className="mx-2 focus:text-blue-500">Active</NavLink>
           <NavLink to="/completed" className="focus:text-blue-500" >Completed</NavLink>
         </div>
-        <p>Clear Completed</p>
+        <p onClick={clearCompleted} className="hover:text-blue-500 cursor-pointer">Clear Completed</p>
       </div>
       <div className={
           lightMode
