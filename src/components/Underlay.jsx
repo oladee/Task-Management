@@ -72,7 +72,7 @@ const Underlay = () => {
 
 
   return (
-    <div className={lightMode? "h-[100vh] text-white bg-white" : " h-[100vh] text-white bg-gray-900"}>
+    <div className={lightMode? "h-[100vh] text-white bg-gray-200" : " h-[100vh] text-white bg-gray-900"}>
       <div className="h-[200px] md:h-[30%]">
         <img
           className="w-full h-full object-cover"
@@ -82,7 +82,7 @@ const Underlay = () => {
           srcSet={lightMode ? srcst2 : srcst1}
         />
       </div>
-      <div className={lightMode? " text-white bg-white" : " text-white bg-gray-900"}>
+      <div className={lightMode? " text-white bg-gray-200" : " text-white bg-gray-900"}>
         <div className="w-[90%] max-w-[500px] relative top-[-8rem] mx-auto flex flex-col justify-center items-center ">
           <div className="flex items-center w-full justify-between">
             <h1 className="text-4xl font-extrabold whitespace-nowrap">
