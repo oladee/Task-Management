@@ -3,16 +3,12 @@ const Footer = ({ lightMode, task, setTask }) => {
   const normal =
     "flex px-4 py-4 placeholder-white-500  rounded-b justify-between items-center text-[14px]";
 
+    const secondNormal = "flex md:hidden justify-center border-t-[12px] py-4"
 
-    function completedList(){
-      let taskCopy = [...task]
-      let newList = taskCopy.filter(x=> x.completed === true)
-      setTask(newList)
-    }
+    const itemsLeft = task.filter(x => x.completed === false)
 
-    function notCompletedList(){
-      let taskCopy = [...task]
-      let newList = taskCopy.filter(x=> x.completed === false)
+    function clearCompleted () { 
+      let newList = task.filter(x => x.completed !== true)
       setTask(newList)
     }
 
@@ -25,15 +21,19 @@ const Footer = ({ lightMode, task, setTask }) => {
             : `${normal} bg-gray-800 text-gray-400`
         }
       >
-        <p>0 item left</p>
+        <p>{itemsLeft.length} item left</p>
         <div className="hidden md:flex ">
           <NavLink to="/" className="focus:text-blue-500">All</NavLink>
           <NavLink to="/active" className="mx-2 focus:text-blue-500">Active</NavLink>
           <NavLink to="/completed" className="focus:text-blue-500" >Completed</NavLink>
         </div>
-        <p>Clear Completed</p>
+        <p onClick={clearCompleted} className="hover:text-blue-500 cursor-pointer">Clear Completed</p>
       </div>
-      <div className="flex md:hidden justify-center border-t-[12px] border-t-gray-900 py-4">
+      <div className={
+          lightMode
+            ? `bg-white text-black ${secondNormal} `
+            : `${secondNormal} bg-gray-800 text-gray-400 border-t-gray-900`
+        }>
         <NavLink to="/" className="focus:text-blue-500">All</NavLink>
         <NavLink to="/active" className="mx-3 focus:text-blue-500">Active</NavLink>
         <NavLink to="/completed" className="focus:text-blue-500">Completed</NavLink>
