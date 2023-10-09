@@ -8,7 +8,10 @@ import Sun from "../assets/icon-sun.svg";
 import moon from '../assets/icon-moon.svg'
 import Form from "./Form";
 import Footer from "./Footer";
-import Todoitem from './TodoItem'
+import AllTodoItems from "./AllTodoItems";
+import ActiveTodo from "./ActiveTodo";
+import CompletedTodo from "./CompletedTodo";
+import { Routes, Route } from "react-router-dom";
 const Underlay = () => {
   var srcst1 = desktopDark + " 1024w, " + mobileDark + " 375w";
   var srcst2 = desktopLight + " 1024w, " + mobileLight + ' 375w'
@@ -18,9 +21,6 @@ const Underlay = () => {
 
   const handleMode = ()=> {
     setLightMode(!lightMode)
-  }
-
-  const handleCompleted = ()=>{
   }
 
   const [task, setTask] = useState([])
@@ -96,13 +96,12 @@ const Underlay = () => {
           >
             <Form lightMode={lightMode} setTask={setTask} task={task}/>
             <div className={lightMode ? "bg-white" : "bg-gray-800"} >
-            {task.map((x,index) => {
-              console.log(x)
-              return(
-                <Todoitem taskName={x.title} id={x.id} key={x.id} lightMode={lightMode} completed={x.completed} task={task} setTask={setTask}/> 
-              )
-            })}
-            <Footer lightMode={lightMode}/>
+            <Routes>
+              <Route path="/" element={<AllTodoItems task={task} lightMode={lightMode} setTask={setTask}/>}/>
+              <Route path="/active" element={<ActiveTodo task={task} lightMode={lightMode} setTask={setTask}/>}/>
+              <Route path="/completed" element={<CompletedTodo task={task} lightMode={lightMode} setTask={setTask}/>}/>
+            </Routes>
+            <Footer lightMode={lightMode} task={task} setTask={setTask}/>
             </div>
           </div>
         </div>
