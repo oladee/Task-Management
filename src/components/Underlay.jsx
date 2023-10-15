@@ -21,6 +21,8 @@ const Underlay = () => {
   }
 
   const handleCompleted = ()=>{
+    
+
   }
 
   const [task, setTask] = useState([])
@@ -95,7 +97,7 @@ const Underlay = () => {
           <div className="items-center w-full justify-between"
           >
             <Form lightMode={lightMode} setTask={setTask} task={task}/>
-            <div className={lightMode ? "bg-white" : "bg-gray-800"} >
+            <div className={lightMode ? "bg-white border border-5" : "bg-gray-800"} >
             {task.map((x,index) => {
               console.log(x)
               return(
