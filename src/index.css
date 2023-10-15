@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,3 +12,42 @@
 body{
     /* height: 100svh; */
 }
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Josefin Sans', sans-serif;
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .checker {
+    display: flex;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    bottom: 0;
+    background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%) );
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+
+>>>>>>> 2f8af0a39c6d6a3fe5ef01705275fbecbfa5e78e

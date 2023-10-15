@@ -8,7 +8,10 @@ import Sun from "../assets/icon-sun.svg";
 import moon from '../assets/icon-moon.svg'
 import Form from "./Form";
 import Footer from "./Footer";
-import Todoitem from './TodoItem'
+import AllTodoItems from "./AllTodoItems";
+import ActiveTodo from "./ActiveTodo";
+import CompletedTodo from "./CompletedTodo";
+import { Routes, Route } from "react-router-dom";
 const Underlay = () => {
   var srcst1 = desktopDark + " 1024w, " + mobileDark + " 375w";
   var srcst2 = desktopLight + " 1024w, " + mobileLight + ' 375w'
@@ -18,11 +21,6 @@ const Underlay = () => {
 
   const handleMode = ()=> {
     setLightMode(!lightMode)
-  }
-
-  const handleCompleted = ()=>{
-    
-
   }
 
   const [task, setTask] = useState([])
@@ -74,7 +72,7 @@ const Underlay = () => {
 
 
   return (
-    <div className={lightMode? "h-full text-white bg-white" : " h-[100%] text-white bg-gray-900"}>
+    <div className={lightMode? "h-[100vh] text-white bg-gray-200" : " h-[100vh] text-white bg-gray-900"}>
       <div className="h-[200px] md:h-[30%]">
         <img
           className="w-full h-full object-cover"
@@ -84,8 +82,8 @@ const Underlay = () => {
           srcSet={lightMode ? srcst2 : srcst1}
         />
       </div>
-      <div className="">
-        <div className="w-[90%] max-w-[500px] mx-auto relative top-[-8rem] md:top-[-10rem] flex flex-col justify-center items-center">
+      <div className={lightMode? " text-white bg-gray-200" : " text-white bg-gray-900"}>
+        <div className="w-[90%] max-w-[500px] relative top-[-8rem] mx-auto flex flex-col justify-center items-center ">
           <div className="flex items-center w-full justify-between">
             <h1 className="text-4xl font-extrabold whitespace-nowrap">
               T O D O
@@ -97,14 +95,13 @@ const Underlay = () => {
           <div className="items-center w-full justify-between"
           >
             <Form lightMode={lightMode} setTask={setTask} task={task}/>
-            <div className={lightMode ? "bg-white border border-5" : "bg-gray-800"} >
-            {task.map((x,index) => {
-              console.log(x)
-              return(
-                <Todoitem taskName={x.title} id={x.id} key={x.id} lightMode={lightMode} completed={x.completed} task={task} setTask={setTask}/> 
-              )
-            })}
-            <Footer lightMode={lightMode}/>
+            <div className={lightMode ? "bg-white" : "bg-gray-800"} >
+            <Routes>
+              <Route path="/" element={<AllTodoItems task={task} lightMode={lightMode} setTask={setTask}/>}/>
+              <Route path="/active" element={<ActiveTodo task={task} lightMode={lightMode} setTask={setTask}/>}/>
+              <Route path="/completed" element={<CompletedTodo task={task} lightMode={lightMode} setTask={setTask}/>}/>
+            </Routes>
+            <Footer lightMode={lightMode} task={task} setTask={setTask}/>
             </div>
           </div>
         </div>
