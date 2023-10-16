@@ -2,7 +2,7 @@ import {NavLink} from "react-router-dom"
 const Footer = ({ lightMode, task, setTask }) => {
   const normal =
     "flex px-4 py-4 placeholder-white-500  rounded-b justify-between items-center text-[14px]";
-
+  const normal2 = 'flex md:hidden justify-center border-t-[12px]  py-4'
 
     const newList = [...task] 
     const itemsLeft = newList.filter(x => x.completed === false)
@@ -28,7 +28,7 @@ const Footer = ({ lightMode, task, setTask }) => {
         </div>
         <p onClick={handleClearComplete} >Clear Completed</p>
       </div>
-      <div className="flex md:hidden justify-center border-t-[12px] border-t-gray-900 py-4">
+      <div className={lightMode ? `${normal2} border-t-gray-200 text-gray-400 `: `${normal2} border-t-gray-200 text-gray-400` }>
         <NavLink to="/" className="focus:text-blue-500">All</NavLink>
         <NavLink to="/active" className="mx-3 focus:text-blue-500">Active</NavLink>
         <NavLink to="/completed" className="focus:text-blue-500">Completed</NavLink>
