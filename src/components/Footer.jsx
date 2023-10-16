@@ -28,7 +28,7 @@ const Footer = ({ lightMode, task, setTask }) => {
         </div>
         <p onClick={handleClearComplete} >Clear Completed</p>
       </div>
-      <div className={lightMode ? `${normal2} border-t-gray-200 text-gray-400 `: `${normal2} border-t-gray-200 text-gray-400` }>
+      <div className={lightMode ? `${normal2} border-t-gray-200 text-gray-400 `: `${normal2} border-t-gray-900 text-gray-400` }>
         <NavLink to="/" className="focus:text-blue-500 hover:text-blue-500 cursor-pointer">All</NavLink>
         <NavLink to="/active" className="mx-3 focus:text-blue-500 hover:text-blue-500 cursor-pointer">Active</NavLink>
         <NavLink to="/completed" className="focus:text-blue-500 hover:text-blue-500 cursor-pointer">Completed</NavLink>
