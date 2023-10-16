@@ -22,16 +22,16 @@ const Footer = ({ lightMode, task, setTask }) => {
       >
         <p>{itemsLeft.length} item left</p>
         <div className="hidden md:flex ">
-          <NavLink to="/" className="focus:text-blue-500">All</NavLink>
-          <NavLink to="/active" className="mx-2 focus:text-blue-500">Active</NavLink>
-          <NavLink to="/completed" className="focus:text-blue-500" >Completed</NavLink>
+          <NavLink to="/" className="focus:text-blue-500 hover:text-blue-500 cursor-pointer">All</NavLink>
+          <NavLink to="/active" className="mx-2 focus:text-blue-500 hover:text-blue-500 cursor-pointer">Active</NavLink>
+          <NavLink to="/completed" className="focus:text-blue-500 hover:text-blue-500 cursor-pointer" >Completed</NavLink>
         </div>
         <p onClick={handleClearComplete} >Clear Completed</p>
       </div>
       <div className={lightMode ? `${normal2} border-t-gray-200 text-gray-400 `: `${normal2} border-t-gray-200 text-gray-400` }>
-        <NavLink to="/" className="focus:text-blue-500">All</NavLink>
-        <NavLink to="/active" className="mx-3 focus:text-blue-500">Active</NavLink>
-        <NavLink to="/completed" className="focus:text-blue-500">Completed</NavLink>
+        <NavLink to="/" className="focus:text-blue-500 hover:text-blue-500 cursor-pointer">All</NavLink>
+        <NavLink to="/active" className="mx-3 focus:text-blue-500 hover:text-blue-500 cursor-pointer">Active</NavLink>
+        <NavLink to="/completed" className="focus:text-blue-500 hover:text-blue-500 cursor-pointer">Completed</NavLink>
       </div>
     </div>
   );
