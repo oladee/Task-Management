@@ -1,7 +1,7 @@
 import { useState } from "react";
 import crossIcon from "../assets/icon-cross.svg";
 import checkIcon from '../assets/icon-check.svg'
-import Footer from "./Footer";
+// import Footer from "./Footer";
 function TodoItem({ taskName, id, lightMode, setTask, task, completed }) {
 
 
@@ -40,7 +40,11 @@ function TodoItem({ taskName, id, lightMode, setTask, task, completed }) {
         (<span className="checker flex"><img src={checkIcon} alt="" onClick={toggleComplete} /></span>) : (<label className="switch border border-gray-400 " onClick={toggleComplete}>
         </label>)
       }
-      <span className={lightMode? "text-black px-3" : "text-white px-3"}>{taskName}</span>
+      {
+        complete ?
+        (<span className={lightMode? "text-black px-3 line-through" : "text-white px-3 line-through"}>{taskName}</span>) : (<span className={lightMode? "text-black px-3" : "text-white px-3"}>{taskName}</span>)
+      }
+      {/* <span className={lightMode? "text-black px-3" : "text-white px-3"}>{taskName}</span> */}
       </label>
       <img src={crossIcon} alt="delete icon" className="cursor-pointer" onClick={handleDelete} />
     </div>
