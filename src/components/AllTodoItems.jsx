@@ -1,49 +1,66 @@
 import TodoItem from "./TodoItem";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 const AllTodoItems = ({ task, lightMode, setTask }) => {
-  const handleDrop = (result) => {
-    if (!result.destination) {
-      return;
-    }
 
-    const newTask = [...task];
-    const [reorderedItem] = newTask.splice(result.source.index, 1);
-    newTask.splice(result.destination.index, 0, reorderedItem);
-    setTask(newTask);
-  };
-
+  const onDragEnd = (result) => {
+    const { destination, source } = result
+    if (!destination) return
+    const items = [...task]
+    const [reorderedItem] = items.splice(source.index, 1)
+    items.splice(destination.index, 0, reorderedItem)
+    setTask(items)
+  }
   return (
-    <DragDropContext onDragEnd={handleDrop}>
-      <div>
-        <Droppable droppableId="list">
-          {(provided) => (
-            <div ref={provided.innerRef}>
-              {task.map((x, index) => (
-                <Draggable key={x.id} draggableId={x.id} index={index}>
-                  {(provided) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
+    <div>
+      {task.length > 0 ? (
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="task">
+            {(provided) => (
+              <div
+                className="task"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {task.map((x, index) => {
+                  return (
+                    <Draggable
+                      key={x.id}
+                      draggableId={x.id.toString()}
+                      index={index}
                     >
-                      <TodoItem
-                        taskName={x.title}
-                        id={x.id}
-                        key={x.id}
-                        lightMode={lightMode}
-                        completed={x.completed}
-                        task={task}
-                        setTask={setTask}
-                      />
-                    </div>
-                )}
-                </Draggable>
-           ) )}
-            </div>
-          )}
-        </Droppable>
-      </div>
-    </DragDropContext>
+                      {(provided) => (
+                        <div
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                        >
+                          <TodoItem
+                            taskName={x.title}
+                            id={x.id}
+                            key={x.id}
+                            lightMode={lightMode}
+                            completed={x.completed}
+                            task={task}
+                            setTask={setTask}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      ) : (
+        <p className="text-[#777a92] text-center pt-2">
+          No items on the list <hr className="mt-2" />
+        </p>
+      )}
+    </div>
   );
 };
+
 export default AllTodoItems;

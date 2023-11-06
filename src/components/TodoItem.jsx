@@ -1,7 +1,7 @@
 import { useState } from "react";
 import crossIcon from "../assets/icon-cross.svg";
 import checkIcon from '../assets/icon-check.svg'
-import Footer from "./Footer";
+// import Footer from "./Footer";
 function TodoItem({ taskName, id, lightMode, setTask, task, completed }) {
 
 
