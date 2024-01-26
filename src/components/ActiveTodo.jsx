@@ -39,6 +39,8 @@ const ActiveTodo = ({ lightMode, task, setTask }) => {
                 >
                   <TodoItem
                     taskName={x.title}
+                    taskDesc = {x.Desc}
+                    dueDate ={x.dueDate}
                     id={x.id}
                     key={x.id}
                     lightMode={lightMode}
@@ -58,7 +60,7 @@ const ActiveTodo = ({ lightMode, task, setTask }) => {
   </DragDropContext>
 : (
         <p className="text-[#777a92] text-center pt-2">
-          No items o the list <hr className="mt-2" />
+          No items on the list <hr className="mt-2" />
         </p>
       )}
  </div>

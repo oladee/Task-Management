@@ -34,6 +34,8 @@ const CompletedTodo = ({ task, setTask, lightMode }) => {
                           >
                             <TodoItem
                               taskName={x.title}
+                              taskDesc = {x.Desc}
+                              dueDate ={x.dueDate}
                               id={x.id}
                               key={x.id}
                               lightMode={lightMode}

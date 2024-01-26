@@ -2,15 +2,14 @@ import TodoItem from "./TodoItem";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const AllTodoItems = ({ task, lightMode, setTask }) => {
-
   const onDragEnd = (result) => {
-    const { destination, source } = result
-    if (!destination) return
-    const items = [...task]
-    const [reorderedItem] = items.splice(source.index, 1)
-    items.splice(destination.index, 0, reorderedItem)
-    setTask(items)
-  }
+    const { destination, source } = result;
+    if (!destination) return;
+    const items = [...task];
+    const [reorderedItem] = items.splice(source.index, 1);
+    items.splice(destination.index, 0, reorderedItem);
+    setTask(items);
+  };
   return (
     <div>
       {task.length > 0 ? (
@@ -37,6 +36,8 @@ const AllTodoItems = ({ task, lightMode, setTask }) => {
                         >
                           <TodoItem
                             taskName={x.title}
+                            taskDesc={x.Desc}
+                            dueDate={x.dueDate}
                             id={x.id}
                             key={x.id}
                             lightMode={lightMode}
