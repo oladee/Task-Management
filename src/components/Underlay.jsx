@@ -24,6 +24,7 @@ const Underlay = () => {
   }
 
   const [task, setTask] = useState([])
+  let todayDate = new Date().toISOString().substring(0,10)
 
   useEffect(() => {
     let taskData = window.localStorage.getItem("taskData");
@@ -34,31 +35,25 @@ const Underlay = () => {
         
             {
               id: 1,
-              title: "Jog around the park 3x",
+              title: "Jogging",
+              Desc: "Jog around the park 3x",
+              dueDate: todayDate,
               completed: false
             },
             {
               id: 2,
-              title: "10 minutes Meditation",
+              title: "Meditation",
+              Desc: "10 minutes of meditation",
+              dueDate: todayDate,
               completed: true
             },
             {
               id: 3,
-              title: "Read for 1 hour",
-              completed: false
-            },
-            {
-              id: 4,
-              title: "Pick up groceries",
-              completed: true
-            },
-            {
-              id: 5,
-              title: 'Complete Todo App on Frontend Mentor',
+              title: "Read",
+              Desc: "Read for my upcoming test",
+              dueDate: todayDate,
               completed: false
             }
-        
-        
       ]);
     }
   }, []);

@@ -67,11 +67,11 @@ function TodoItem({ taskName, id, lightMode, setTask, task, completed, taskDesc,
       {
         complete ?
         (<div className={lightMode? "text-black px-3 line-through" : "text-white px-3 line-through"}>
-          <h1 className="text-sm md:text-lg uppercase">{taskName}</h1>
+          <h1 className="text-sm md:text-base uppercase">{taskName}</h1>
           <p className="text-sm md:text-lg">{taskDesc}</p>
         </div>) : 
         (<div className={lightMode? "text-black px-3 flex flex-col" : "text-white px-3"}>
-          <h1 className="text-base md:text-xl uppercase">{taskName}</h1>
+          <h1 className="text-base md:text-lg uppercase">{taskName}</h1>
         <p className="text-sm">{taskDesc}</p>
         </div>)
       }
