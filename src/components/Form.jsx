@@ -41,7 +41,7 @@ const Form = ({lightMode, setTask, task}) => {
     }} className="mb-5">
       <div >
         <input
-        className={lightMode ? `bg-white text-black ${normal} placeholder-black-500 ` : `bg-gray-800 text-white ${normal} placeholder-white-500`}
+        className={lightMode ? `bg-white text-black ${normal} placeholder-black-500 mb-2` : `bg-gray-800 text-white ${normal} placeholder-white-500 mb-2`}
           aria-label="Enter a TItle..."
           type="text"
           name="title"
@@ -51,7 +51,7 @@ const Form = ({lightMode, setTask, task}) => {
           onBlur={formik.handleBlur}
           autoComplete="off"
         />
-        <div className="flex items-center">
+        <div className="flex items-center mb-2">
         <input
         className={lightMode ? `bg-white text-black ${normal2} placeholder-black-500 ` : `bg-gray-800 text-white ${normal2} placeholder-white-500`}
         aria-label="Enter a Desc..."
@@ -65,7 +65,7 @@ const Form = ({lightMode, setTask, task}) => {
         />
         <span className="datepicker-toggle">
         <span className="datepicker-toggle-button"></span>
-        <input type="date" className="datepicker-input" name="dueDate" value={formik.values.dueDate} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+        <input type="date" className="datepicker-input " name="dueDate" value={formik.values.dueDate} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
         </span>
           
         </div>
@@ -76,7 +76,7 @@ const Form = ({lightMode, setTask, task}) => {
             </div>)}
         
         </div>
-        <button className="bg-green-600">Add Task</button>
+        <button className="bg-green-600 px-3 py-2 rounded-lg disabled:bg-green-300" disabled={!formik.isValid}>Add Task</button>
       </div>
       <ToastContainer />
     </form>

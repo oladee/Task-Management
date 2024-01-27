@@ -20,6 +20,10 @@ function TodoItem({ taskName, id, lightMode, setTask, task, completed, taskDesc,
   {
     setLateReview('late')
   }
+  else if(noOfDateLeft > 2 && noOfDateLeft <= 5)
+  {
+    setLateReview('inMind')
+  }
   else{
     setLateReview('allgood')
   }
@@ -63,19 +67,19 @@ function TodoItem({ taskName, id, lightMode, setTask, task, completed, taskDesc,
       {
         complete ?
         (<div className={lightMode? "text-black px-3 line-through" : "text-white px-3 line-through"}>
-          <h1>{taskName}</h1>
-          <p>{taskDesc}</p>
+          <h1 className="text-sm md:text-lg uppercase">{taskName}</h1>
+          <p className="text-sm md:text-lg">{taskDesc}</p>
         </div>) : 
         (<div className={lightMode? "text-black px-3 flex flex-col" : "text-white px-3"}>
-          <h1>{taskName}</h1>
-        <p>{taskDesc}</p>
+          <h1 className="text-base md:text-xl uppercase">{taskName}</h1>
+        <p className="text-sm">{taskDesc}</p>
         </div>)
       }
       </label>
       <div className="flex items-center gap-2">
       <div className={lightMode? "text-black text-xs md:text-base" : "text-white ml-auto text-xs md:text-base"}>
-        <div className={complete? "hidden" : latereview == "late" ?" flex flex-col bg-red-400 p-1 md:px-2 md:py-3 rounded-lg": "flex flex-col bg-green-400 p-1 md:px-2 md:py-3 rounded-lg"}>
-        due Date
+        <div className={complete? "hidden" : latereview == "late" ?" flex flex-col bg-red-400 p-1 md:px-2 md:py-3 rounded-lg": latereview == "inMind" ? "flex flex-col bg-amber-300 p-1 md:px-2 md:py-3 rounded-lg" :"flex flex-col bg-green-400 p-1 md:px-2 md:py-3 rounded-lg"}>
+        Due by:
         <p>{dueDate}</p>
         </div>
       </div>

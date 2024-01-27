@@ -39,6 +39,7 @@
     position: relative;
     width: 25px;
     height: 25px;
+    background-color: azure;
   }
   .datepicker-toggle-button {
     position: absolute;
