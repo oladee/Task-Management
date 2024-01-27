@@ -17,6 +17,8 @@ Users will be able to:
 
 - Toggle light and dark mode
 
+- Drag and Drop
+
 ## Technologies used
 
 - Vite React Js, Tailwindcss, React Router
