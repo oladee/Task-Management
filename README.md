@@ -17,5 +17,26 @@ Users will be able to:
 
 - Toggle light and dark mode
 
-- **Bonus**: Drag and drop to reorder items on the list
+## Technologies used
 
+- Vite React Js, Tailwindcss, React Router
+
+- Formik, Yup
+
+## How to Use
+
+- After cloning the repo using `git clone` to your local
+
+- Make use of the `npm install` command to download the project dependencies
+
+- Use `npm run dev` to run project on your local development server
+
+### Design Choice
+
+This is more or less like an upgrade from a previous To do app i co-developed with a friend of mine. some of these includes
+
+- Colored cards to identify how close a task is to its due date
+
+- A title for each task also including its description
+
+- Form validation to help control user input

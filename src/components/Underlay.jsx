@@ -85,8 +85,8 @@ const Underlay = () => {
       <div className={lightMode? " text-white bg-gray-200" : " text-white bg-gray-900"}>
         <div className="w-[90%] max-w-[500px] relative top-[-8rem] mx-auto flex flex-col justify-center items-center ">
           <div className="flex items-center w-full justify-between">
-            <h1 className="text-4xl font-extrabold whitespace-nowrap">
-              T O D O
+            <h1 className="text-4xl font-extrabold whitespace-nowrap tracking-[1rem]">
+              TASK MANAGER
             </h1>
             <img src={lightMode ? moon : Sun } alt="sun" className="object-contain h-8 ml-2 cursor-pointer"
             onClick={handleMode}
