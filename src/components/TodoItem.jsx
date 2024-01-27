@@ -1,6 +1,7 @@
 import { useState } from "react";
 import crossIcon from "../assets/icon-cross.svg";
 import checkIcon from '../assets/icon-check.svg'
+import { useEffect } from "react";
 // import Footer from "./Footer";
 function TodoItem({ taskName, id, lightMode, setTask, task, completed, taskDesc, dueDate }) {
 
@@ -8,14 +9,23 @@ function TodoItem({ taskName, id, lightMode, setTask, task, completed, taskDesc,
   const [complete,setComplete] = useState(completed)
   const [latereview, setLateReview] = useState('')
 
+  
+
+  useEffect(()=>{
   let dueDateMili = new Date(dueDate)
   let todayDate = new Date()
   let noOfDateLeft = Math.ceil((dueDateMili - todayDate)/(1000*60*60*24))
-
-  if (noOfDateLeft < 2)
+  console.log(noOfDateLeft)
+  if (noOfDateLeft <= 2)
   {
-    
+    setLateReview('late')
   }
+  else{
+    setLateReview('allgood')
+  }
+  },[latereview, dueDate])
+
+  
 
   function toggleComplete() {
     let items = [...task]
@@ -64,7 +74,7 @@ function TodoItem({ taskName, id, lightMode, setTask, task, completed, taskDesc,
       </label>
       <div className="flex items-center gap-2">
       <div className={lightMode? "text-black text-xs md:text-base" : "text-white ml-auto text-xs md:text-base"}>
-        <div className=" flex flex-col bg-red-400 p-1 md:px-2 md:py-3 rounded-lg">
+        <div className={complete? "hidden" : latereview == "late" ?" flex flex-col bg-red-400 p-1 md:px-2 md:py-3 rounded-lg": "flex flex-col bg-green-400 p-1 md:px-2 md:py-3 rounded-lg"}>
         due Date
         <p>{dueDate}</p>
         </div>

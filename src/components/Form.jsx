@@ -1,41 +1,54 @@
-import { useState } from "react";
+import { useFormik } from "formik";
+import { toast, ToastContainer } from "react-toastify";
+import * as Yup from 'yup';
 
 const Form = ({lightMode, setTask, task}) => {
 
-  const [taskTitle, setTaskTitle] = useState('')
-  const [taskDesc, setTaskDesc] = useState('')
-  const [dueDate, setDueDate] = useState('')
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    let file = [...task]
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      desc: "",
+      dueDate: ""
+    },
+    validationSchema: Yup.object({
+      title: Yup.string().required("Title is Required"),
+      desc: Yup.string().required('please give a description'),
+      dueDate: Yup.string().required('Please give a due date')
+    }),
+    onSubmit:  (values) => {
+      
+        let file = [...task]
     file.push({
       id: new Date().getTime(),
-      title: taskTitle,
-      Desc: taskDesc,
-      dueDate: dueDate,
+      title: values.title,
+      Desc: values.desc,
+      dueDate: values.dueDate,
       completed: false
     })
-    console.log(dueDate)
     setTask(file)
-    setTaskTitle('')
-    setTaskDesc('')
-  };
-
+    formik.resetForm()
+    }
+  })
+  const err = ()=>{
+    toast.error(formik.errors)
+  }
   const normal = "w-1/2 px-4 py-2  mt-10 rounded outline-none"
   const normal2 = "w-3/4 px-4 py-2 rounded outline-none"
   return (
-    <form onSubmit={onSubmit} className="mb-5">
+    <form onSubmit={(e)=>{
+      e.preventDefault()
+      formik.isValid ? formik.handleSubmit() : err()
+    }} className="mb-5">
       <div >
         <input
         className={lightMode ? `bg-white text-black ${normal} placeholder-black-500 ` : `bg-gray-800 text-white ${normal} placeholder-white-500`}
           aria-label="Enter a TItle..."
           type="text"
+          name="title"
           placeholder="Enter a Title..."
-          value={taskTitle}
-          onChange={(e)=>{
-            setTaskTitle(e.target.value)
-          }}
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           autoComplete="off"
         />
         <div className="flex items-center">
@@ -43,23 +56,31 @@ const Form = ({lightMode, setTask, task}) => {
         className={lightMode ? `bg-white text-black ${normal2} placeholder-black-500 ` : `bg-gray-800 text-white ${normal2} placeholder-white-500`}
         aria-label="Enter a Desc..."
         type="text"
+        name="desc"
         placeholder="Enter a Desc..."
-        value={taskDesc}
-        onChange={(e)=>{
-          setTaskDesc(e.target.value)
-        }}
+        value={formik.values.desc}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         autoComplete="off"
         />
         <span className="datepicker-toggle">
         <span className="datepicker-toggle-button"></span>
-        <input type="date" className="datepicker-input" value={dueDate} onChange={(e)=>{
-          setDueDate(e.target.value)
-        }}/>
+        <input type="date" className="datepicker-input" name="dueDate" value={formik.values.dueDate} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
         </span>
+          
         </div>
-        <button></button>
+        <div className="text-red-500">
+        {formik.touched.title && formik.errors.title || formik.touched.dueDate && formik.errors.dueDate ?(<div>{formik.errors.title}</div>) : 
+        (<div>
+          {formik.errors.dueDate}
+            </div>)}
+        
+        </div>
+        <button className="bg-green-600">Add Task</button>
       </div>
+      <ToastContainer />
     </form>
+   
   );
 };
 
